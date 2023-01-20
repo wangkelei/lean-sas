@@ -2312,7 +2312,7 @@ AV.Cloud.define('resetPassword', function(request, response){
     var userQuery = new AV.Query('_User');
     userQuery.equalTo(phoneNumber)
     var data = {};
-    userQuery.find.then(function(results){
+    userQuery.find().then(function(results){
         if(results.length > 0){
             data['objectId'] = results[0].id
             response.success(data)

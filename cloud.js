@@ -2306,6 +2306,21 @@ AV.Cloud.define('login', function(request, response) {
     });
 });
 
+AV.Cloud.define('resetPassword', function(request, response){
+    var phoneNumber = request.params.phoneNumber;
+    var password = request.params.password;
+    var userQuery = new AV.Query('_User');
+    userQuery.equalTo(phoneNumber)
+    var data = {};
+    userQuery.find.then(function(results){
+        if(results.length > 0){
+            data['objectId'] = results[0].id
+            response.success(data)
+        }else{
+            response.error("can not find user");
+        }
+    })
+})
 /**
  * @Author   bibitiger
  * @DateTime 2016-06-01T15:07:50+0800

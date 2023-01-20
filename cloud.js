@@ -2315,6 +2315,7 @@ AV.Cloud.define('resetPassword', function(request, response){
     userQuery.find().then(function(results){
         if(results.length > 0){
             data['objectId'] = results[0].id
+            data['sessionToken'] = user._sessionToken;
             response.success(data)
         }else{
             response.error("can not find user");

@@ -2045,7 +2045,6 @@ AV.Cloud.define('updateDevice', function(request, response) {
 });
 
 
-
 /**
  * @Author   bibitiger
  * @DateTime 2016-05-30T15:13:19+0800
@@ -2316,7 +2315,7 @@ AV.Cloud.define('resetPassword', function(request, response){
         if(results.length > 0){
             data['user'] = results[0]
             data['objectId'] = results[0].id
-            data['sessionToken'] = results[0]._sessionToken;
+            data['sessionToken'] = results[0].sessionToken;
             response.success(data)
         }else{
             response.error("can not find user");
